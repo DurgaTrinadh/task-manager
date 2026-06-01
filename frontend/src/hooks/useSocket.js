@@ -7,8 +7,7 @@ export const useSocket = (token, onCreated, onUpdated, onDeleted) => {
   useEffect(() => {
     if (!token) return;
 
-    socketRef.current = io('http://localhost:5001', { auth: { token } });
-
+    socketRef.current = io(process.env.REACT_APP_API_URL, { auth: { token } });
     socketRef.current.on('connect',      () => console.log('⚡ Real-time connected!'));
     socketRef.current.on('task:created', (task) => onCreated && onCreated(task));
     socketRef.current.on('task:updated', (task) => onUpdated && onUpdated(task));
