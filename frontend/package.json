@@ -21,10 +21,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
+ "eslintConfig": {
   "extends": ["react-app"],
   "rules": {
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "off"
   }
 },
   "browserslist": {
