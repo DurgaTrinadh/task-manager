@@ -1,154 +1,150 @@
-Task Management Application
+# ✅ TaskFlow — Real-Time Task Manager
 
-A full-stack Task Management Application that helps users create, organize, update, and track tasks efficiently. The application provides secure authentication, task management features, and a responsive user experience across desktop and mobile devices.
+A full-stack task management application with real-time updates, JWT authentication, and a clean React UI.
 
-🌐 Live Demo:
-[Task Management Application](https://task-manager-weld-kappa.vercel.app/)
+🔗 **Live Site:** [task-manager-weld-kappa.vercel.app](https://task-manager-weld-kappa.vercel.app/)  
+📦 **Repo:** [github.com/DurgaTrinadh/task-manager](https://github.com/DurgaTrinadh/task-manager)
 
-📌 Project Overview
+---
 
-This project was developed to learn and implement full-stack web development concepts including authentication, REST APIs, database integration, deployment, and responsive UI design.
+## ✨ Features
 
-The application allows users to:
+- **JWT Authentication** — Secure register & login with token-based sessions
+- **Real-Time Updates** — Live task changes using Socket.io (no page refresh needed)
+- **Create / Edit / Delete Tasks** — Full CRUD for task management
+- **Task Status Tracking** — Mark tasks as pending, in-progress, or completed
+- **Persistent Storage** — All tasks saved to MongoDB
+- **Responsive UI** — Works on desktop and mobile
 
-Register and log in securely
-Create, update, and delete tasks
-Track task progress
-Organize tasks efficiently
-Access the application from both desktop and mobile devices
-🚀 Features
-🔐 User Authentication & Authorization
-User Registration
-User Login
-Secure Password Hashing
-JWT-based Authentication
-Protected Routes
-User-specific Task Access
-📋 Task Management (CRUD)
-Create new tasks
-View all tasks
-Update task details
-Delete tasks
-Track task status
-📊 Task Tracking
-Task title and description
-Priority management
-Status updates
-Organized task workflow
-📱 Responsive Design
-Mobile-friendly UI
-Tablet compatibility
-Desktop optimization
-Modern user experience
-⚡ Full-Stack Integration
-Frontend connected with backend APIs
-Dynamic data fetching
-Real-time UI updates after CRUD operations
-🛠️ Tech Stack
-Frontend
-React.js
-JavaScript (ES6+)
-HTML5
-CSS3
-Axios
-React Router
-Backend
-Node.js
-Express.js
-Database
-MongoDB
-Mongoose
-Authentication
-JWT (JSON Web Token)
-bcrypt.js
-Deployment
-Frontend: Vercel
-Backend: Railway
-📂 Project Structure
+---
+
+## 🛠️ Tech Stack
+
+| Layer      | Technologies                          |
+|------------|---------------------------------------|
+| Frontend   | React, Socket.io-client               |
+| Backend    | Node.js, Express, Socket.io           |
+| Database   | MongoDB, Mongoose                     |
+| Auth       | JWT (JSON Web Tokens)                 |
+| Hosting    | Vercel (frontend), Railway (backend)  |
+
+---
+
+## 📁 Project Structure
+
+```
 task-manager/
-│
-├── frontend/
+├── frontend/               # React app
 │   ├── src/
-│   ├── public/
+│   │   ├── components/     # UI components
+│   │   ├── pages/          # Login, Register, Dashboard
+│   │   └── App.js
 │   └── package.json
-│
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── config/
-│   └── server.js
-│
-└── README.md
-⚙️ Installation
-Clone Repository
-git clone <repository-url>
+├── backend/                # Node.js/Express API
+│   ├── models/             # Mongoose schemas
+│   ├── routes/             # API route handlers
+│   ├── middleware/         # JWT auth middleware
+│   ├── controllers/        # Business logic
+│   └── index.js
+└── .gitignore
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- MongoDB (local or MongoDB Atlas)
+- npm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/DurgaTrinadh/task-manager.git
 cd task-manager
-Frontend Setup
-cd frontend
-npm install
-npm start
-Backend Setup
+```
+
+### Backend Setup
+
+```bash
 cd backend
 npm install
-npm run dev
-Environment Variables
+```
 
-Create a .env file inside the backend folder:
+Create a `.env` file in the `backend/` folder:
 
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-API Endpoints
-Authentication
-POST /api/auth/register
-POST /api/auth/login
-Tasks
-GET    /api/tasks
-POST   /api/tasks
-PUT    /api/tasks/:id
-DELETE /api/tasks/:id
-🎯 Learning Outcomes
+JWT_SECRET=your_jwt_secret_key
+CLIENT_URL=http://localhost:3000
+```
 
-This project helped in understanding:
+```bash
+node index.js
+```
 
-Full-stack application architecture
-REST API development
-MongoDB database operations
-User authentication and authorization
-Frontend-backend communication
-State management
-Deployment using Vercel and Railway
-Responsive web design
-CRUD operations in real-world applications
-📸 Application Highlights
-Secure Login & Registration
-Task Creation and Management
-Dynamic Data Handling
-Mobile Responsive Design
-Cloud Deployment
-Clean User Interface
-Future Enhancements
-Real-time updates using WebSockets
-Task categories
-Due dates and reminders
-Drag-and-drop Kanban board
-Team collaboration
-Email notifications
-Dark/Light theme toggle
-👨‍💻 Author
+### Frontend Setup
 
-Durga Trinadh Ranganadham
+```bash
+cd frontend
+npm install
+```
 
-3rd Year Computer Science Engineering Student
+Create a `.env` file in the `frontend/` folder:
 
-Passionate about:
+```env
+REACT_APP_API_URL=http://localhost:5000
+```
 
-Full Stack Development
-MERN Stack
-Web Applications
-Software Engineering
-📄 License
+```bash
+npm start
+```
 
-This project is developed for educational and learning purposes.
+The frontend runs on `http://localhost:3000` and the backend on `http://localhost:5000`.
+
+---
+
+## 🌍 Deployment
+
+- **Frontend** deployed on [Vercel](https://vercel.com/)
+- **Backend** deployed on [Railway](https://railway.app/) (fallback: [Render](https://render.com/))
+- **Database** hosted on [MongoDB Atlas](https://www.mongodb.com/atlas)
+
+Set all environment variables in your Vercel and Railway dashboards before deploying. Make sure `CLIENT_URL` in the backend matches your Vercel frontend URL to avoid CORS issues.
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint              | Description              | Auth Required |
+|--------|-----------------------|--------------------------|---------------|
+| POST   | `/api/auth/register`  | Register a new user      | ❌            |
+| POST   | `/api/auth/login`     | Login and get JWT token  | ❌            |
+| GET    | `/api/tasks`          | Get all tasks for user   | ✅            |
+| POST   | `/api/tasks`          | Create a new task        | ✅            |
+| PUT    | `/api/tasks/:id`      | Update a task            | ✅            |
+| DELETE | `/api/tasks/:id`      | Delete a task            | ✅            |
+
+---
+
+## 📬 Contact
+
+| Platform | Link |
+|----------|------|
+| Email    | durgatrinadhranganadham@gmail.com |
+| GitHub   | [github.com/DurgaTrinadh](https://github.com/DurgaTrinadh) |
+| LinkedIn | [linkedin.com/in/durga-trinadh-ranganadham](https://www.linkedin.com/in/durga-trinadh-ranganadham-82b37a32b/) |
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+> Built with ❤️ by Ranganadham Durga Trinadh
